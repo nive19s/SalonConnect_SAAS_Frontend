@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper font-sans text-ink antialiased; }
+  ::selection { @apply bg-ink text-paper; }
+  :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  img, svg { display: block; max-width: 100%; }
+}
+
+@layer components {
+  .link-underline {
+    @apply bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300;
+    background-image: linear-gradient(currentColor, currentColor);
+  }
+  .link-underline:hover { background-size: 100% 1px; }
+  .field {
+    @apply h-12 w-full rounded-none border-0 border-b border-ink bg-transparent px-0 text-base placeholder:text-ash;
+  }
+  .field:focus-visible { outline: none; border-bottom-width: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none !important; }
+}
