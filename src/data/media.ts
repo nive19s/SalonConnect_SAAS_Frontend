@@ -1,8 +1,7 @@
-// Central place for every photo and video. Photos are Unsplash ids (free to use under
-// the Unsplash License). For launch, replace with your own licensed photography.
+// Central place for every photo and video.
 
 export const heroMedia = {
-  photo: 'photo-1560066984-138dadb4c035',
+  photo: '/images/HeroMedia.webp',
   alt: 'A stylist working with a client in a bright, modern salon',
   // Optional looping video. Put a short (under 4 MB) muted MP4 in /public/videos
   // and set the path, e.g. '/videos/hero.mp4'. Leave empty to show the photo only.
@@ -10,12 +9,12 @@ export const heroMedia = {
 };
 
 export const categoryPhotos = {
-  hair: 'photo-1562322140-8baeececf3df',
-  nails: 'photo-1604654894610-df63bc536371',
-  skin: 'photo-1570172619644-dfd03ed5d881',
-  bridal: 'photo-1487412947147-5cebf100ffc2',
-  barber: 'photo-1503951914875-452162b0f3f1',
-  spa: 'photo-1544161515-4ab6ce6db874',
+  hair: '/images/categories/haircutservice.jpg',
+  nails: '/images/categories/nails.jpg',
+  skin: '/images/categories/facialservice.jpg',
+  bridal: '/images/categories/bridalmakeup.jpg',
+  barber: '/images/categories/barber.jpg',
+  spa: '/images/categories/massageservice.jpg',
 };
 
 export const salonPhotos = {

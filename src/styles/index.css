@@ -25,3 +25,99 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee { animation: none !important; }
 }
+
+
+
+.hero-collage {
+  isolation: isolate;
+}
+
+.service-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.service-card:hover {
+  z-index: 20;
+  transform: translateY(-8px) rotate(0deg) scale(1.04);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* Haircut */
+.hair-card {
+  left: 5%;
+  top: 8%;
+  width: 35%;
+  height: 42%;
+  transform: rotate(-10deg);
+  z-index: 2;
+}
+
+/* Facial */
+.facial-card {
+  right: 9%;
+  top: 5%;
+  width: 32%;
+  height: 36%;
+  transform: rotate(9deg);
+  z-index: 2;
+}
+
+/* Bridal makeup - Main focal image */
+.bridal-card {
+  left: 30%;
+  top: 29%;
+  width: 43%;
+  height: 43%;
+  transform: rotate(-4deg);
+  z-index: 5;
+}
+
+/* Manicure */
+.manicure-card {
+  left: 2%;
+  bottom: 12%;
+  width: 31%;
+  height: 35%;
+  transform: rotate(-9deg);
+  z-index: 3;
+}
+
+/* Pedicure */
+.pedicure-card {
+  left: 36%;
+  bottom: 0%;
+  width: 35%;
+  height: 30%;
+  transform: rotate(7deg);
+  z-index: 3;
+}
+
+/* Massage */
+.massage-card {
+  right: 2%;
+  bottom: 16%;
+  width: 33%;
+  height: 38%;
+  transform: rotate(8deg);
+  z-index: 4;
+}
+
+@media (max-width: 640px) {
+  .hero-collage {
+    max-width: 440px;
+  }
+
+  .service-card {
+    border-width: 3px;
+    border-radius: 14px;
+  }
+
+  .service-card span {
+    left: 5px;
+    bottom: 5px;
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+}
+

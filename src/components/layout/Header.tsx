@@ -67,24 +67,26 @@ export default function Header() {
         </div>
       </Container>
 
-      <div id="mobile-menu" hidden={!open} className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-paper md:hidden">
-        <Container as="nav" aria-label="Mobile" className="flex flex-col gap-2 py-8">
-          {site.nav.map((item) => (
-            <Link key={item.label} to={item.to} className="border-b border-line py-5 font-display text-4xl">{item.label}</Link>
-          ))}
-          {signedIn ? (
-            <>
-              <Link to="/account" className="border-b border-line py-5 font-display text-4xl">My account</Link>
-              {hasSalon && <Link to="/salon-admin" className="border-b border-line py-5 font-display text-4xl">Salon admin</Link>}
-              {isStaff && <Link to="/platform" className="border-b border-line py-5 font-display text-4xl">Platform</Link>}
-              <Button variant="outline" size="lg" className="mt-8" onClick={() => void logout()}>Log out</Button>
-            </>
-          ) : (
-            <Link to="/login" className="border-b border-line py-5 font-display text-4xl">Log in</Link>
-          )}
-          <Button to="/salons" size="lg" className="mt-4">Book now</Button>
-        </Container>
-      </div>
+      {open && (
+        <div id="mobile-menu" className="absolute left-0 right-0 top-full z-50 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-line bg-paper shadow-lg md:hidden">
+          <Container as="nav" aria-label="Mobile" className="flex flex-col gap-1 py-3 sm:py-4">
+            {site.nav.map((item) => (
+              <Link key={item.label} to={item.to} className="border-b border-line py-2.5 font-display text-xl sm:py-3 sm:text-2xl">{item.label}</Link>
+            ))}
+            {signedIn ? (
+              <>
+                <Link to="/account" className="border-b border-line py-2.5 font-display text-xl sm:py-3 sm:text-2xl">My account</Link>
+                {hasSalon && <Link to="/salon-admin" className="border-b border-line py-2.5 font-display text-xl sm:py-3 sm:text-2xl">Salon admin</Link>}
+                {isStaff && <Link to="/platform" className="border-b border-line py-2.5 font-display text-xl sm:py-3 sm:text-2xl">Platform</Link>}
+                <Button variant="outline" size="md" className="mt-3" onClick={() => void logout()}>Log out</Button>
+              </>
+            ) : (
+              <Link to="/login" className="border-b border-line py-2.5 font-display text-xl sm:py-3 sm:text-2xl">Log in</Link>
+            )}
+            <Button to="/salons" size="md" className="mt-2 sm:h-12">Book now</Button>
+          </Container>
+        </div>
+      )}
     </header>
   );
 }

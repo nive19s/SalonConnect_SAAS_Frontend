@@ -1,44 +1,76 @@
-import { useEffect, useState } from 'react';
-import { heroMedia } from '@/data/media';
-import Img from '@/components/ui/Img';
 
-// Skip video when the visitor asks for less motion or has Data Saver on.
-const canPlayVideo = () =>
-  !!heroMedia.video &&
-  !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-  !(navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+const services = [
+  {
+    name: 'Haircut',
+    image: '/images/services/haircut.jpg',
+    className: 'hair-card',
+    icon: '✂',
+  },
+  {
+    name: 'Facial',
+    image: '/images/services/facial.jpg',
+    className: 'facial-card',
+    icon: '✧',
+  },
+  {
+    name: 'Bridal Makeup',
+    image: '/images/services/bridal.jpg',
+    className: 'bridal-card',
+    icon: '♕',
+  },
+  {
+    name: 'Manicure',
+    image: '/images/services/manicure.jpg',
+    className: 'manicure-card',
+    icon: '◇',
+  },
+  {
+    name: 'Pedicure',
+    image: '/images/services/pedicure.jpg',
+    className: 'pedicure-card',
+    icon: '✧',
+  },
+  {
+    name: 'Massage',
+    image: '/images/services/massage.jpg',
+    className: 'massage-card',
+    icon: '❀',
+  },
+];
 
-/** Photo first (it is the LCP image); an optional video fades in once it can play. */
 export default function HeroMedia() {
-  const [playVideo, setPlayVideo] = useState(false);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => setPlayVideo(canPlayVideo()), []);
-
   return (
-    <div className="relative">
-      <Img
-        photo={heroMedia.photo}
-        alt={heroMedia.alt}
-        ratio="aspect-[4/5]"
-        sizes="(min-width: 1024px) 40vw, 100vw"
-        widths={[480, 800, 1200]}
-        priority
-      />
-      {playVideo && (
-        <video
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${ready ? 'opacity-100' : 'opacity-0'}`}
-          src={heroMedia.video}
-          poster=""
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden
-          onCanPlay={() => setReady(true)}
-        />
-      )}
+    <div className="hero-collage relative mx-auto aspect-[1/1] w-full max-w-[620px]">
+
+      {/* Decorative background */}
+      <div className="absolute inset-[12%] rounded-full border border-[#D4AF37]/40" />
+
+      <div className="absolute left-[48%] top-[5%] text-3xl text-[#D4AF37]">
+        ✦
+      </div>
+
+      <div className="absolute bottom-[5%] right-[12%] text-3xl text-[#D4AF37]">
+        ✦
+      </div>
+
+      {services.map((service) => (
+        <div
+          key={service.name}
+          data-service-card
+          className={`service-card ${service.className} absolute overflow-hidden rounded-[24px] border-[5px] border-white shadow-xl`}
+        >
+          <img
+            src={service.image}
+            alt={service.name}
+            className="h-full w-full object-cover"
+          />
+
+          <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-black shadow-md">
+            <span className="mr-1">{service.icon}</span>
+            {service.name}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
