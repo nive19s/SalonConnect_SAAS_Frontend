@@ -50,12 +50,12 @@ export default function Hero() {
 
         {/* LEFT - CONTENT */}
         <div className="order-1 relative z-10 max-w-xl">
-          <span
+          {/* <span
             data-fade
             className="mb-6 inline-flex items-center rounded-full border border-black/15 px-4 py-2 text-sm"
           >
             ✦ Your Beauty, Our Priority
-          </span>
+          </span> */}
 
           <h1 className="font-display text-[clamp(3.5rem,5.5vw,6rem)] leading-[0.96] tracking-[-0.045em]">
   {lines.map((line, index) => (
